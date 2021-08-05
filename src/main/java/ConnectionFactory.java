@@ -1,32 +1,29 @@
 import java.sql.*;
+import com.mysql.cj.jdbc.Driver;
 
 public class ConnectionFactory {
-    static void registerJDBCDriver(){
-        try{
-            DriverManager.registerDriver(Driver.class.newInstance());
-        }
-        catch (InstantiationException | IllegalAccessException | SQLException e1) {
-            throw new Error();
-        }
-    }
-
-    static Statement getScrollableStatement(Connection connection) {
-        int resultSetType =  ResultSet.TYPE_SCROLL_INSENSITIVE;
-        int resultSetConcurrency = ResultSet.CONCUR_READ_ONLY;
-        try { // scrollable statements can be iterated more than once without closing
-            return connection.createStatement(resultSetType, resultSetConcurrency);
-        } catch (SQLException e) {
-            throw new Error(e);
-        }
-    }
-
-    static void executeStatement(Connection connection, String sqlStatement) {
+    static void registerJDBCDriver() {
         try {
-            Statement statement = getScrollableStatement(connection);
-            statement.execute(sqlStatement);
-            connection.commit();
+            DriverManager.registerDriver(Driver.class.newInstance());
+        } catch (InstantiationException | IllegalAccessException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static Connection getConnection(String dbVendor) {
+        String username = "dipinti";
+        String password = "zipcode0";
+        String url = new StringBuilder()
+                .append("jdbc:")
+                .append(dbVendor)
+                .append("://127.0.0.1/")
+                .append("?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC")
+                .toString();
+        try {
+            return DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             throw new Error(e);
         }
     }
+
 }

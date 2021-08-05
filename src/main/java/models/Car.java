@@ -78,11 +78,11 @@ public class Car {
     @Override
     public String toString() {
         return "Car Details: \n" +
-                "CarId: "+this.id+
-                "CarMake: "+this.make+
-                "CarModel: "+this.model+
-                "CarYear: "+this.year+
-                "CarColor: "+this.color+
-                "CarVin: "+this.vin;
+                "CarId:-"+this.id+
+                " CarMake:-"+this.make+
+                " CarModel:-"+this.model+
+                " CarYear:-"+this.year+
+                " CarColor:-"+this.color+
+                " CarVin:-"+this.vin;
     }
 }
