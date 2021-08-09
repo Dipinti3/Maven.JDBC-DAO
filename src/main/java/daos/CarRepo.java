@@ -61,7 +61,7 @@ public class CarRepo implements ConnectionInterface{
     public Car findById(int id) {
         return findAll()
                 .stream()
-                .filter(potion -> potion.getId()==(id))
+                .filter(car -> car.getId()==(id))
                 .findAny()
                 .get();
     }

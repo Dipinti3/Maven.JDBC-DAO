@@ -10,14 +10,6 @@ public class Car {
 
     public Car(){}
 
-    public Car(String make, String model, int year, String color, String vin) {
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.color = color;
-        this.vin = vin;
-    }
-
     public Car(int id, String make, String model, int year, String color, String vin) {
         this.id = id;
         this.make = make;
@@ -26,6 +18,16 @@ public class Car {
         this.color = color;
         this.vin = vin;
     }
+
+    public Car(String make, String model, int year, String color, String vin) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.color = color;
+        this.vin = vin;
+    }
+
+
 
     public int getId() {
         return id;
